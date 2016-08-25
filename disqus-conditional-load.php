@@ -2,8 +2,8 @@
 /**
  * Plugin Name:     Disqus Conditional Load
  * Plugin URI:      https://dclwp.com
- * Description:     Best Diqus plugin for WordPress comments with advanced features like <strong>lazy loading, shortcode, widgets, Woocommerce/EDD support</strong> etc.
- * Version:         3.0.0
+ * Description:     Best Diqus plugin for WordPress comments with advanced features like <strong>lazy loading, shortcode, widgets, Woocommerce/EDD support</strong> etc. Don't let Disqus to slow your site down.
+ * Version:         11.0.0
  * Author:          Joel James
  * Author URI:      https://thefoxe.com/
  * Donate link:     https://paypal.me/JoelCJ
@@ -32,6 +32,35 @@
  * @link     https://dclwp.com
  */
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
-    die( 'Damn it.! Dude you are looking for what?' );
+if ( ! defined( 'ABSPATH' ) ) exit;
+
+// Stay lazy if our class is already there.
+if ( ! class_exists( 'Disqus_Conditional_Load' ) ) :
+
+/**
+ * File that contains main DCL plugin class.
+ */
+require_once plugin_dir_path(__FILE__) . 'includes/class-disqus-conditional-load.php';
+
+/**
+ * The main function for that returns Disqus_Conditional_Load
+ *
+ * The main function responsible for returning the one true Disqus_Conditional_Load
+ * Instance to functions everywhere.
+ *
+ * Use this function like you would a global variable, except without needing
+ * to declare the global.
+ *
+ * Example: <?php $dcl = Disqus_Conditional_Load(); ?>
+ *
+ * @since 11.0.0
+ * 
+ * @return Disqus_Conditional_Load|object
+ */
+function run_dcl() {
+
+    return Disqus_Conditional_Load::instance();
 }
+run_dcl();
+
+endif; // End if class_exists check.
