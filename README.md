@@ -1,2 +1,2 @@
-# disqus-conditional-load
-Diqus Conditional Load
+# Disqus Conditional Load
+Disqus plugin for WordPress with advanced features.
