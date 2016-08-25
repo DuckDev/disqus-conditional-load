@@ -43,6 +43,38 @@ if ( ! class_exists( 'Disqus_Conditional_Load' ) ) :
 require_once plugin_dir_path(__FILE__) . 'includes/class-disqus-conditional-load.php';
 
 /**
+ * Setup plugin constants.
+ *
+ * We need a few constants in our plugin.
+ * These values should be constant and con't
+ * be altered later.
+ *
+ * @since  10.0.0
+ * @access private
+ *
+ * @return void
+ */
+function dcl_set_constants() {
+    
+    $constants = array(
+        'DCL_NAME' => 'disqus-conditional-load',
+        'DCL_DOMAIN' => 'disqus-conditional-load',
+        'DCL_PLUGIN_DIR' => plugin_dir_path( __FILE__ ),
+        'DCL_PLUGIN_URL' => plugin_dir_url( __FILE__ ),
+        'DCL_VERSION' => '11.0.0',
+        // Set who all can access dcl settings.
+        // You can change this if you want to give others access.
+        'DCL_ACCESS' => 'manage_options',
+    );
+
+    foreach( $constants as $constant => $value ) {
+        if ( ! defined( $constant ) ) {
+            define( $constant, $value );
+        }
+    }
+}
+
+/**
  * The main function for that returns Disqus_Conditional_Load
  *
  * The main function responsible for returning the one true Disqus_Conditional_Load
@@ -61,6 +93,7 @@ function run_dcl() {
 
     return Disqus_Conditional_Load::instance();
 }
+dcl_set_constants();
 run_dcl();
 
 endif; // End if class_exists check.
