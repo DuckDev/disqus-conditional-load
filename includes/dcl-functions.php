@@ -15,7 +15,10 @@ if (! defined( 'ABSPATH' ) ) {
     exit;
 }
 
-$dcl = run_dcl();
+/**
+ * Main DCL class instance.
+ */
+$dcl = DCL_Plugin();
 
 /**
  * Creating comments output.
@@ -80,8 +83,10 @@ function dcl_shortcode_exists( $shortcode = 'js-disqus' ) {
 function dcl_scroll_script() {
 
     global $dcl;
-    
-    echo $dcl->scroll_script(); exit();
+
+    $public = $dcl->public_init();
+
+    return $public->scroll_script();
 }
 
 /**

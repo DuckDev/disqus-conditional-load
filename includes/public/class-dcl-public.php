@@ -31,7 +31,6 @@ class DCL_Public {
     public function __construct() {
 
         add_filter( 'respond_link', array( $this, 'respond_link' ) );
-        add_action('init', array( $this, 'test'));
     }
 
     /**
@@ -49,10 +48,6 @@ class DCL_Public {
     public function respond_link(){
 
         return get_permalink() . '#disqus_thread';
-    }
-
-    public function test() {
-        return dcl_scroll_script();
     }
 
     /**

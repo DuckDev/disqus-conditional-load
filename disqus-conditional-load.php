@@ -83,17 +83,19 @@ function dcl_set_constants() {
  * Use this function like you would a global variable, except without needing
  * to declare the global.
  *
- * Example: <?php $dcl = Disqus_Conditional_Load(); ?>
+ * Example: <?php $dcl = DCL_Plugin(); ?>
  *
  * @since 11.0.0
  * 
  * @return Disqus_Conditional_Load|object
  */
-function run_dcl() {
+function DCL_Plugin() {
+
+    dcl_set_constants();
 
     return Disqus_Conditional_Load::instance();
 }
-dcl_set_constants();
-run_dcl();
+
+DCL_Plugin();
 
 endif; // End if class_exists check.

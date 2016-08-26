@@ -121,7 +121,7 @@ final class Disqus_Conditional_Load {
      *
      * @return void
      */
-    private function admin_init() {
+    public function admin_init() {
 
         return new DCL_Admin();
     }
@@ -137,7 +137,7 @@ final class Disqus_Conditional_Load {
      *
      * @return void
      */
-    private function public_init() {
+    public function public_init() {
 
         return new DCL_Public();
     }
