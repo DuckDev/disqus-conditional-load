@@ -49,9 +49,9 @@ final class Disqus_Conditional_Load {
         if ( ! isset( self::$instance ) && !( self::$instance instanceof Disqus_Conditional_Load ) ) {
             self::$instance = new Disqus_Conditional_Load;
             self::$instance->includes();
-            self::$instance->locale_init();
-            self::$instance->admin_init();
-            self::$instance->public_init();
+            self::$instance->dcl_locale();
+            self::$instance->dcl_admin();
+            self::$instance->dcl_public();
         }
 
         return self::$instance;
@@ -121,7 +121,7 @@ final class Disqus_Conditional_Load {
      *
      * @return void
      */
-    public function admin_init() {
+    public function dcl_admin() {
 
         return new DCL_Admin();
     }
@@ -137,7 +137,7 @@ final class Disqus_Conditional_Load {
      *
      * @return void
      */
-    public function public_init() {
+    public function dcl_public() {
 
         return new DCL_Public();
     }
@@ -153,7 +153,7 @@ final class Disqus_Conditional_Load {
      *
      * @return void
      */
-    private function locale_init() {
+    private function dcl_locale() {
 
         return new DCL_i18n();
     }

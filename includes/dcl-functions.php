@@ -16,11 +16,6 @@ if (! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Main DCL class instance.
- */
-$dcl = DCL_Plugin();
-
-/**
  * Creating comments output.
  *
  * Output the Disqus comments box to the
@@ -69,24 +64,85 @@ function dcl_shortcode_exists( $shortcode = 'js-disqus' ) {
 }
 
 /**
- * Verify shortcode existance in current page.
+ * Disqus comments scroll script.
  *
- * Check if given shortcode is already exists in
- * current page's content.
- * Sample usage - dcl_shortcode_exists('test_shortcode');
+ * This function will output the script
+ * which can load Disqus comments when visitor
+ * scroll downs to the comments area of the
+ * page.
  *
- * @since  10.0.0
+ * @since  11.0.0
  * @access public
  *
- * @return File|Comments file content.
+ * @return JS|JavaScript.
  */
 function dcl_scroll_script() {
 
-    global $dcl;
-
-    $public = $dcl->public_init();
+    $public = DCL_Plugin()->dcl_public();
 
     return $public->scroll_script();
+}
+
+/**
+ * Disqus comments click script.
+ *
+ * This function will output the script
+ * which can load Disqus comments when visitor
+ * clicks on a button in comments area.
+ *
+ * @since  11.0.0
+ * @access public
+ *
+ * @return JS|JavaScript.
+ */
+function dcl_click_script() {
+
+    $public = DCL_Plugin()->dcl_public();
+
+    return $public->click_script();
+}
+
+/**
+ * Disqus comments normal script.
+ *
+ * This function will output the script
+ * which can load Disqus comments normally
+ * as how Disqus loads it without any
+ * lazy load effect.
+ *
+ * @since  11.0.0
+ * @access public
+ *
+ * @return JS|JavaScript.
+ */
+function dcl_normal_script() {
+
+    $public = DCL_Plugin()->dcl_public();
+
+    return $public->normal_script();
+}
+
+/**
+ * Disqus comments loading method.
+ *
+ * Get the loading method set by user
+ * to load Disqus comments.
+ * 
+ * Possible outputs:
+ * - click (Load after clicking).
+ * - scroll (Load on scroll).
+ * - normal (No lazy load).
+ *
+ * @since  11.0.0
+ * @access public
+ *
+ * @return string click|scroll|normal.
+ */
+function dcl_load_method() {
+
+    $public = DCL_Plugin()->dcl_public();
+
+    return $public->load_method();
 }
 
 /**

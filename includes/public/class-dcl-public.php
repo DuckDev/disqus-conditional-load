@@ -63,7 +63,7 @@ class DCL_Public {
      * @return void
      */
     public function scroll_script() {
-        return 'test';
+
     }
 
     /**
