@@ -49,6 +49,7 @@ final class Disqus_Conditional_Load {
         if ( ! isset( self::$instance ) && !( self::$instance instanceof Disqus_Conditional_Load ) ) {
             self::$instance = new Disqus_Conditional_Load;
             self::$instance->includes();
+            self::$instance->dcl_activate();
             self::$instance->dcl_locale();
             self::$instance->dcl_admin();
             self::$instance->dcl_public();
@@ -142,6 +143,25 @@ final class Disqus_Conditional_Load {
         return new DCL_Public();
     }
 
+    /**
+     * Plugin activation actions.
+     *
+     * Actions to perform during plugin activation.
+     * We will be registering default options in
+     * this function.
+     *
+     * @uses register_activation_hook() To register activation hook.
+     *
+     * @since  10.0.0
+     * @access private
+     *
+     * @return void
+     */
+    private function dcl_activate() {
+
+        register_activation_hook( DCL_BASE_FILE, array( 'DCL_Activator', 'activate' ) );
+    }
+    
     /**
      * Initialize public class.
      *

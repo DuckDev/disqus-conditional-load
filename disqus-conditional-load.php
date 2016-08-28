@@ -61,6 +61,7 @@ function dcl_set_constants() {
         'DCL_DOMAIN' => 'disqus-conditional-load',
         'DCL_PLUGIN_DIR' => plugin_dir_path( __FILE__ ),
         'DCL_PLUGIN_URL' => plugin_dir_url( __FILE__ ),
+        'DCL_BASE_FILE' => __FILE__,
         'DCL_VERSION' => '11.0.0',
         // Set who all can access dcl settings.
         // You can change this if you want to give others access.
