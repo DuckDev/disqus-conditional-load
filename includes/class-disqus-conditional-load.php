@@ -53,6 +53,7 @@ final class Disqus_Conditional_Load {
             self::$instance->dcl_locale();
             self::$instance->dcl_admin();
             self::$instance->dcl_public();
+            self::$instance->dcl_review();
         }
 
         return self::$instance;
@@ -109,6 +110,7 @@ final class Disqus_Conditional_Load {
         include_once DCL_PLUGIN_DIR . 'includes/admin/class-dcl-admin.php';
         include_once DCL_PLUGIN_DIR . 'includes/public/class-dcl-public.php';
         include_once DCL_PLUGIN_DIR . 'includes/dcl-functions.php';
+        include_once DCL_PLUGIN_DIR . 'includes/admin/class-dcl-reviews.php';
     }
 
     /**
@@ -176,6 +178,22 @@ final class Disqus_Conditional_Load {
     private function dcl_locale() {
 
         return new DCL_i18n();
+    }
+
+    /**
+     * Initialize public class.
+     *
+     * Register all of the hooks related to the public
+     * functionality.
+     *
+     * @since  10.0.0
+     * @access private
+     *
+     * @return void
+     */
+    private function dcl_review() {
+
+        return new DCL_Reviews();
     }
 
 }
