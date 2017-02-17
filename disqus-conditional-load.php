@@ -24,7 +24,7 @@
  *
  * You should have received a copy of the GNU General Public License
  * along with Disqus Conditional Load. If not, see <http://www.gnu.org/licenses/>.
- * 
+ *
  * @category Core
  * @package  DCL
  * @author   Joel James <me@joelsays.com>
@@ -32,71 +32,73 @@
  * @link     https://dclwp.com
  */
 // If this file is called directly, abort.
-if ( ! defined( 'ABSPATH' ) ) exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
 
 // Stay lazy if our class is already there.
 if ( ! class_exists( 'Disqus_Conditional_Load' ) ) :
 
-/**
- * File that contains main DCL plugin class.
- */
-require_once plugin_dir_path(__FILE__) . 'includes/class-disqus-conditional-load.php';
+	/**
+	 * File that contains main DCL plugin class.
+	 */
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-disqus-conditional-load.php';
 
-/**
- * Setup plugin constants.
- *
- * We need a few constants in our plugin.
- * These values should be constant and con't
- * be altered later.
- *
- * @since  10.0.0
- * @access private
- *
- * @return void
- */
-function dcl_set_constants() {
-    
-    $constants = array(
-        'DCL_NAME' => 'disqus-conditional-load',
-        'DCL_DOMAIN' => 'disqus-conditional-load',
-        'DCL_PLUGIN_DIR' => plugin_dir_path( __FILE__ ),
-        'DCL_PLUGIN_URL' => plugin_dir_url( __FILE__ ),
-        'DCL_BASE_FILE' => __FILE__,
-        'DCL_VERSION' => '11.0.0',
-        // Set who all can access dcl settings.
-        // You can change this if you want to give others access.
-        'DCL_ACCESS' => 'manage_options',
-    );
+	/**
+	 * Setup plugin constants.
+	 *
+	 * We need a few constants in our plugin.
+	 * These values should be constant and con't
+	 * be altered later.
+	 *
+	 * @since  10.0.0
+	 * @access private
+	 *
+	 * @return void
+	 */
+	function dcl_set_constants() {
 
-    foreach( $constants as $constant => $value ) {
-        if ( ! defined( $constant ) ) {
-            define( $constant, $value );
-        }
-    }
-}
+		$constants = array(
+			'DCL_NAME'       => 'disqus-conditional-load',
+			'DCL_DOMAIN'     => 'disqus-conditional-load',
+			'DCL_PLUGIN_DIR' => plugin_dir_path( __FILE__ ),
+			'DCL_PLUGIN_URL' => plugin_dir_url( __FILE__ ),
+			'DCL_BASE_FILE'  => __FILE__,
+			'DCL_VERSION'    => '11.0.0',
+			// Set who all can access dcl settings.
+			// You can change this if you want to give others access.
+			'DCL_ACCESS'     => 'manage_options',
+		);
 
-/**
- * The main function for that returns Disqus_Conditional_Load
- *
- * The main function responsible for returning the one true Disqus_Conditional_Load
- * Instance to functions everywhere.
- *
- * Use this function like you would a global variable, except without needing
- * to declare the global.
- *
- * Example: <?php $dcl = DCL_Plugin(); ?>
- *
- * @since 11.0.0
- * 
- * @return Disqus_Conditional_Load|object
- */
-function DCL_Plugin() {
+		foreach ( $constants as $constant => $value ) {
+			if ( ! defined( $constant ) ) {
+				define( $constant, $value );
+			}
+		}
+	}
 
-    dcl_set_constants();
+	/**
+	 * The main function for that returns Disqus_Conditional_Load
+	 *
+	 * The main function responsible for returning the one true Disqus_Conditional_Load
+	 * Instance to functions everywhere.
+	 *
+	 * Use this function like you would a global variable, except without needing
+	 * to declare the global.
+	 *
+	 * Example: <?php $dcl = DCL_Plugin(); ?>
+	 *
+	 * @since 11.0.0
+	 *
+	 * @return Disqus_Conditional_Load|object
+	 */
+	function DCL_Plugin() {
 
-    return Disqus_Conditional_Load::instance();
-}
+		dcl_set_constants();
 
-DCL_Plugin();
+		return Disqus_Conditional_Load::instance();
+	}
+
+	DCL_Plugin();
 
 endif; // End if class_exists check.
