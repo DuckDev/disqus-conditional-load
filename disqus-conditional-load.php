@@ -58,23 +58,23 @@ function dcl_set_constants() {
 
 	$constants = array(
 		// DCL custom constants.
-		'DCL_NAME'			 => 'disqus-conditional-load',
-		'DCL_TEXTDOMAIN'	 => 'disqus-conditional-load',
-		'DCL_PLUGIN_DIR'	 => plugin_dir_path( __FILE__ ),
-		'DCL_PLUGIN_URL'	 => plugin_dir_url( __FILE__ ),
-		'DCL_BASE_FILE'		 => __FILE__,
-		'DCL_VERSION'		 => '11.0.0',
+		'DCL_NAME'           => 'disqus-conditional-load',
+		'DCL_TEXTDOMAIN'     => 'disqus-conditional-load',
+		'DCL_PLUGIN_DIR'     => plugin_dir_path( __FILE__ ),
+		'DCL_PLUGIN_URL'     => plugin_dir_url( __FILE__ ),
+		'DCL_BASE_FILE'      => __FILE__,
+		'DCL_VERSION'        => '11.0.0',
 		// Capability of the user role for accessing settings.
-		'DCL_ACCESS'		 => 'manage_options',
+		'DCL_ACCESS'         => 'manage_options',
 		// Disqus core constans.
-		'DCL_DOMAIN'		 => 'disqus.com',
-		'DCL_IMPORTER_URL'	 => 'https://import.disqus.com/',
-		'DCL_API_URL'		 => 'https://disqus.com/api/',
-		'DCL_RSS_PATH'		 => '/latest.rss',
-		'DCL_CAN_EXPORT'	 => true,
-		'DCL_DEBUG'			 => false,
+		'DCL_DOMAIN'         => 'disqus.com',
+		'DCL_IMPORTER_URL'   => 'https://import.disqus.com/',
+		'DCL_API_URL'        => 'https://disqus.com/api/',
+		'DCL_RSS_PATH'       => '/latest.rss',
+		'DCL_CAN_EXPORT'     => true,
+		'DCL_DEBUG'          => false,
 		'DCL_DISQUS_VERSION' => '2.86',
-		'DCL_SYNC_TIMEOUT'	 => 30,
+		'DCL_SYNC_TIMEOUT'   => 30,
 	);
 
 	foreach ( $constants as $constant => $value ) {
@@ -85,9 +85,9 @@ function dcl_set_constants() {
 }
 
 /**
- * The main function for that returns Disqus_Conditional_Load
+ * The main function for that returns DCL\Disqus
  *
- * The main function responsible for returning the one true Disqus_Conditional_Load
+ * The main function responsible for returning the one true DCL\Disqus
  * Instance to functions everywhere.
  *
  * Use this function like you would a global variable, except without needing
@@ -95,9 +95,10 @@ function dcl_set_constants() {
  *
  * Example: <?php $dcl = DCL_Diqus(); ?>
  *
- * @since 11.0.0
+ * @since  11.0.0
+ * @access public
  *
- * @return Disqus_Conditional_Load|object
+ * @return DCL\Disqus|object
  */
 function DCL_Diqus() {
 

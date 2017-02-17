@@ -1,29 +1,45 @@
 <?php
+
+// If this file is called directly, abort.
+defined( 'ABSPATH' ) or exit;
+
 /**
- * Dynamically loads the class attempting to be instantiated elsewhere in the
- * plugin.
+ * Custom autoloader for dynamically loading the classes attempting
+ * to be instantiated elsewhere in the plugin.
  *
- * @package Tutsplus_Namespace_Demo\Inc
+ * To use PHP namespaces properly we need a autoloader to autoload
+ * classes using the namespaces.
+ *
+ * @category Autoloader
+ * @package  DCL\Inc
+ * @author   Tom McFarlin <tom@tommcfarlin.com>
+ * @author   Joel James <me@joelsays.com>
+ * @since    11.0.0
+ * @license  http://www.gnu.org/licenses/ GNU General Public License
  */
 
-spl_autoload_register( 'tutsplus_namespace_demo_autoload' );
+spl_autoload_register( 'dcl_autoload' );
 
 /**
  * Dynamically loads the class attempting to be instantiated elsewhere in the
  * plugin by looking at the $class_name parameter being passed as an argument.
  *
- * The argument should be in the form: TutsPlus_Namespace_Demo\Namespace. The
- * function will then break the fully-qualified class name into its pieces and
- * will then build a file to the path based on the namespace.
- *
+ * The argument should be in the form: DCL\Namespace.
+ * The function will then break the fully-qualified class name into its pieces
+ * and will then build a file to the path based on the namespace.
  * The namespaces in this plugin map to the paths in the directory structure.
  *
  * @param string $class_name The fully-qualified name of the class to load.
+ *
+ * @since  11.0.0
+ * @access public
+ *
+ * @return void
  */
-function tutsplus_namespace_demo_autoload( $class_name ) {
+function dcl_autoload( $class_name ) {
 
     // If the specified $class_name does not include our namespace, duck out.
-    if ( false === strpos( $class_name, 'Tutsplus_Namespace_Demo' ) ) {
+    if ( false === strpos( $class_name, 'DCL' ) ) {
         return;
     }
 

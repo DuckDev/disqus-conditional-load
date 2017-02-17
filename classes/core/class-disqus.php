@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) or exit;
  * WordPress plugin and improved for better performance and extensibility.
  * Disqus official plugin (https://wordpress.org/plugins/disqus-comment-system/).
  *
- * @since	 11.0.0
+ * @since    11.0.0
  * @category Core
  * @package  DCL\Disqus
  * @author   Joel James <me@joelsays.com>
@@ -27,7 +27,7 @@ class Disqus {
 	/**
 	 * Main Disqus class instance.
 	 *
-	 * @var	   DCL\Disqus
+	 * @var    DCL\Disqus
 	 * @since  11.0.0
 	 * @access private
 	 */
