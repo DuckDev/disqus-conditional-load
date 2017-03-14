@@ -32,9 +32,7 @@
  * @link     https://dclwp.com
  */
 // If this file is called directly, abort.
-if ( ! defined( 'ABSPATH' ) ) {
-	exit;
-}
+defined( 'ABSPATH' ) or exit;
 
 // Stay lazy if our class is already there.
 if ( ! class_exists( 'Disqus_Conditional_Load' ) ) :
