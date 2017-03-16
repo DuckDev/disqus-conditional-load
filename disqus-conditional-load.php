@@ -31,11 +31,10 @@
  * @license  http://www.gnu.org/licenses/ GNU General Public License
  * @link     https://dclwp.com
  */
-
-use DCL\Disqus;
-
 // If this file is called directly, abort.
 defined( 'ABSPATH' ) or exit;
+
+use DCL\Disqus;
 
 /**
  * File that contains main DCL plugin class.
