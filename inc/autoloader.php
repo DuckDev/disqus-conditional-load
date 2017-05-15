@@ -46,12 +46,15 @@ function dcl_autoload( $class_name ) {
 	// Split the class name into an array to read the namespace and class.
 	$file_parts = explode( '\\', $class_name );
 
-	// Do a reverse loop through $file_parts to build the path to the file.
 	$namespace = '';
+
+	// Do a reverse loop through $file_parts to build the path to the file.
 	for ( $i = count( $file_parts ) - 1; $i > 0; $i -- ) {
 
 		// Read the current component of the file part.
 		$current = strtolower( $file_parts[ $i ] );
+
+		// Replace underscores with hyphens.
 		$current = str_ireplace( '_', '-', $current );
 
 		// If we're at the first entry, then we're at the filename.
