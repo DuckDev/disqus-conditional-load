@@ -37,7 +37,7 @@ defined( 'ABSPATH' ) or exit;
 use DCL\Disqus;
 
 /**
- * File that contains main DCL plugin class.
+ * DCL autoloader to autoload required files.
  */
 require_once plugin_dir_path( __FILE__ ) . 'inc/autoloader.php';
 
@@ -46,7 +46,8 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/autoloader.php';
  *
  * We need a few constants in our plugin. To avoid
  * fatal error, please verify the constants are not
- * set before defining it.
+ * set before defining it. This also makes it easy
+ * to overwrite the constant values.
  *
  * @since  11.0.0
  * @access private
@@ -55,7 +56,8 @@ require_once plugin_dir_path( __FILE__ ) . 'inc/autoloader.php';
  */
 function dcl_set_constants() {
 
-	$constants = array(
+	// These constants can not be overwritten.
+	$default_constants = array(
 		// DCL custom constants.
 		'DCL_NAME'           => 'disqus-conditional-load',
 		'DCL_TEXTDOMAIN'     => 'disqus-conditional-load',
@@ -63,20 +65,30 @@ function dcl_set_constants() {
 		'DCL_PLUGIN_URL'     => plugin_dir_url( __FILE__ ),
 		'DCL_BASE_FILE'      => __FILE__,
 		'DCL_VERSION'        => '11.0.0',
-		// Capability of the user role for accessing settings.
-		'DCL_ACCESS'         => 'manage_options',
 		// Disqus core constans.
 		'DCL_DOMAIN'         => 'disqus.com',
 		'DCL_IMPORTER_URL'   => 'https://import.disqus.com/',
 		'DCL_API_URL'        => 'https://disqus.com/api/',
 		'DCL_RSS_PATH'       => '/latest.rss',
+		'DCL_DISQUS_VERSION' => '2.86',
+	);
+
+	// These constants can be overwritten.
+	$public_constants = array(
+		// Capability of the user role for accessing settings.
+		'DCL_ACCESS'         => 'manage_options',
 		'DCL_CAN_EXPORT'     => true,
 		'DCL_DEBUG'          => false,
-		'DCL_DISQUS_VERSION' => '2.86',
 		'DCL_SYNC_TIMEOUT'   => 30,
 	);
 
-	foreach ( $constants as $constant => $value ) {
+	// Define default constants.
+	foreach ( $default_constants as $constant => $value ) {
+		define( $constant, $value );
+	}
+
+	// Define if not defined somewhere else.
+	foreach ( $public_constants as $constant => $value ) {
 		if ( ! defined( $constant ) ) {
 			define( $constant, $value );
 		}
